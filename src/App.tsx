@@ -1,17 +1,32 @@
-function App() {
+import { Routes, Route } from "react-router-dom";
+import {
+  Home,
+  About,
+  Products,
+  SingleProduct,
+  Cart,
+  Checkout,
+  Error,
+} from "./pages";
+import { Navbar, Footer, Sidebar } from "./components";
+
+const App = () => {
   return (
-    <div className="test">
-      <h1>Mugular</h1>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam, omnis.
-        Maiores molestiae reiciendis iste sunt itaque aperiam laboriosam. Qui
-        nemo esse nisi inventore, quos eaque velit ipsam aspernatur, tempora
-        labore officiis animi eveniet deserunt rem. Earum beatae fugiat illo
-        temporibus velit exercitationem optio dignissimos ab, eum sequi unde
-        repudiandae corporis.
-      </p>
-    </div>
+    <>
+      <Navbar />
+      <Sidebar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<SingleProduct />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
+      <Footer />
+    </>
   );
-}
+};
 
 export default App;
