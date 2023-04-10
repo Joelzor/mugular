@@ -271,3 +271,31 @@ ul {
   height: 0.25rem;
   margin: 0 auto;
 }
+
+/* section */
+
+.section {
+  padding: 5rem 0;
+}
+.section-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: var(--max-width);
+}
+
+@media screen and (min-width: 992px) {
+  .section-center {
+    width: 95vw;
+  }
+}
+.text-center {
+  text-align: center;
+}
+
+.page-100 {
+  min-height: calc(100vh - 10rem);
+  padding: 5rem 0;
+}
+.page {
+  min-height: calc(100vh - (20vh + 10rem));
+}
