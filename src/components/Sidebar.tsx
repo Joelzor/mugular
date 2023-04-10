@@ -2,29 +2,48 @@ import { Link } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 import styled from "styled-components";
 import CartButtons from "./CartButtons";
+import { useAppSelector, useAppDispatch } from "../hooks";
+import { closeSidebar } from "../features/sidebar/sidebarSlice";
 
 const Sidebar = () => {
+  const { isSidebarOpen } = useAppSelector((store) => store.sidebar);
+  const dispatch = useAppDispatch();
+
   return (
     <SidebarContainer>
-      <aside className="sidebar">
+      <aside
+        className={`${isSidebarOpen ? "sidebar show-sidebar" : "sidebar"}`}
+      >
         <div className="sidebar-header">
           <h3>Mugular</h3>
-          <button className="close-btn" type="button">
+          <button
+            className="close-btn"
+            type="button"
+            onClick={() => dispatch(closeSidebar())}
+          >
             <FaTimes />
           </button>
         </div>
         <ul className="links">
           <li>
-            <Link to="/">home</Link>
+            <Link to="/" onClick={() => dispatch(closeSidebar())}>
+              home
+            </Link>
           </li>
           <li>
-            <Link to="/about">about</Link>
+            <Link to="/about" onClick={() => dispatch(closeSidebar())}>
+              about
+            </Link>
           </li>
           <li>
-            <Link to="/products">products</Link>
+            <Link to="/products" onClick={() => dispatch(closeSidebar())}>
+              products
+            </Link>
           </li>
           <li>
-            <Link to="/checkout">checkout</Link>
+            <Link to="/checkout" onClick={() => dispatch(closeSidebar())}>
+              checkout
+            </Link>
           </li>
         </ul>
         <CartButtons />

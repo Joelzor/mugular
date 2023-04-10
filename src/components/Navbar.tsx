@@ -2,14 +2,21 @@ import styled from "styled-components";
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import CartButtons from "./CartButtons";
+import { useAppDispatch } from "../hooks.tsx";
+import { openSidebar } from "../features/sidebar/sidebarSlice";
 
 const Navbar = () => {
+  const dispatch = useAppDispatch();
+
   return (
     <Wrapper>
       <div className="nav-center">
         <div className="nav-header">
           <h3>Mugular</h3>
-          <button className="nav-toggle">
+          <button
+            className="nav-toggle"
+            onClick={() => dispatch(openSidebar())}
+          >
             <FaBars />
           </button>
         </div>
