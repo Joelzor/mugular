@@ -5,5 +5,15 @@ import CartButtons from "./CartButtons";
 import Hero from "./Hero";
 import Featured from "./Featured";
 import Services from "./Services";
+import ContactForm from "./ContactForm";
 
-export { Navbar, Sidebar, Footer, CartButtons, Hero, Featured, Services };
+export {
+  Navbar,
+  Sidebar,
+  Footer,
+  CartButtons,
+  Hero,
+  Featured,
+  Services,
+  ContactForm,
+};
