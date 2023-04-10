@@ -6,7 +6,7 @@ import CartButtons from "./CartButtons";
 const Sidebar = () => {
   return (
     <SidebarContainer>
-      <aside className="sidebar show-sidebar">
+      <aside className="sidebar">
         <div className="sidebar-header">
           <h3>Mugular</h3>
           <button className="close-btn" type="button">
