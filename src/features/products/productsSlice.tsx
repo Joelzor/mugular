@@ -6,9 +6,6 @@ interface ProductsInterface {
   productsError: boolean;
   products: [];
   featuredProducts: [];
-  singleProductLoading: boolean;
-  singleProductError: boolean;
-  singleProduct: {};
 }
 
 const initialState: ProductsInterface = {
@@ -16,9 +13,6 @@ const initialState: ProductsInterface = {
   productsError: false,
   products: [],
   featuredProducts: [],
-  singleProductLoading: false,
-  singleProductError: false,
-  singleProduct: {},
 };
 
 export const getProducts = createAsyncThunk(

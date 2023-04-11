@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import {
   Home,
@@ -9,8 +10,16 @@ import {
   Error,
 } from "./pages";
 import { Navbar, Footer, Sidebar } from "./components";
+import { getProducts } from "./features/products/productsSlice";
+import { useAppDispatch } from "./hooks";
 
 const App = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, []);
+
   return (
     <>
       <Navbar />

@@ -8,10 +8,6 @@ const Featured = () => {
   const { featuredProducts } = useAppSelector((store) => store.products);
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(getProducts());
-  }, []);
-
   return (
     <Wrapper className="section">
       <div className="title">
