@@ -1,8 +1,11 @@
 import { FaShoppingCart, FaUserMinus, FaUserPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const CartButtons = () => {
+  const { user, loginWithRedirect, logout } = useAuth0();
+
   return (
     <Wrapper className="cart-btn-wrapper">
       <Link to="/cart" className="cart-btn">
@@ -12,9 +15,25 @@ const CartButtons = () => {
           <span className="cart-value">5</span>
         </span>
       </Link>
-      <button className="auth-btn" type="button">
-        Log in <FaUserPlus />
-      </button>
+      {user ? (
+        <button
+          className="auth-btn"
+          type="button"
+          onClick={() =>
+            logout({ logoutParams: { returnTo: window.location.origin } })
+          }
+        >
+          Logout <FaUserMinus />
+        </button>
+      ) : (
+        <button
+          className="auth-btn"
+          type="button"
+          onClick={() => loginWithRedirect()}
+        >
+          Login <FaUserPlus />
+        </button>
+      )}
     </Wrapper>
   );
 };
