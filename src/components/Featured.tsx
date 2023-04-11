@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { getProducts } from "../features/products/productsSlice";
 import { useAppDispatch, useAppSelector } from "../hooks";
+import Product from "./Product";
 
 const Featured = () => {
   const { featuredProducts } = useAppSelector((store) => store.products);
@@ -14,11 +15,13 @@ const Featured = () => {
   return (
     <Wrapper className="section">
       <div className="title">
-        <h2>featured products</h2>
+        <h3>featured products</h3>
         <div className="title-underline"></div>
       </div>
       <div className="section-center featured">
-        {featuredProducts.map((product) => "product")}
+        {featuredProducts.map((product, index) => {
+          return <Product key={index} product={product} />;
+        })}
       </div>
     </Wrapper>
   );
