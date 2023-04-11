@@ -48,6 +48,9 @@ const productsSlice = createSlice({
       .addCase(getProducts.fulfilled, (state, action) => {
         state.productsLoading = false;
         state.products = action.payload;
+        state.featuredProducts = action.payload.filter(
+          (product: { featured: boolean }) => product.featured === true
+        );
       })
       .addCase(getProducts.rejected, (state) => {
         state.productsLoading = false;
