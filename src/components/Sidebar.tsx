@@ -4,10 +4,12 @@ import styled from "styled-components";
 import CartButtons from "./CartButtons";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { closeSidebar } from "../features/sidebar/sidebarSlice";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Sidebar = () => {
   const { isSidebarOpen } = useAppSelector((store) => store.sidebar);
   const dispatch = useAppDispatch();
+  const { user } = useAuth0();
 
   return (
     <SidebarContainer>
@@ -40,11 +42,11 @@ const Sidebar = () => {
               products
             </Link>
           </li>
-          <li>
+          {user && (
             <Link to="/checkout" onClick={() => dispatch(closeSidebar())}>
               checkout
             </Link>
-          </li>
+          )}
         </ul>
         <CartButtons />
       </aside>

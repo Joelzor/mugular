@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import CartButtons from "./CartButtons";
 import { useAppDispatch } from "../hooks.tsx";
 import { openSidebar } from "../features/sidebar/sidebarSlice";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
+  const { user } = useAuth0();
 
   return (
     <Wrapper>
@@ -30,6 +32,11 @@ const Navbar = () => {
           <li>
             <Link to="/products">products</Link>
           </li>
+          {user && (
+            <li>
+              <Link to="/checkout">checkout</Link>
+            </li>
+          )}
         </ul>
         <CartButtons />
       </div>

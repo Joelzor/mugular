@@ -6,7 +6,7 @@ const AboutPage = () => {
   return (
     <main>
       <Wrapper className="page section section-center">
-        <img src={aboutImg} alt="nice desk" />
+        <img src={aboutImg} alt="woman drinking from a nice mug" />
         <article>
           <div className="title">
             <h2>Our Story</h2>
