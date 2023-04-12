@@ -1,12 +1,18 @@
-import { useEffect } from "react";
 import styled from "styled-components";
-import { getProducts } from "../features/products/productsSlice";
-import { useAppDispatch, useAppSelector } from "../hooks";
+import { useAppSelector } from "../hooks";
 import Product from "./Product";
+import Loading from "./Loading";
 
 const Featured = () => {
   const { featuredProducts } = useAppSelector((store) => store.products);
-  const dispatch = useAppDispatch();
+
+  if (featuredProducts.length === 0) {
+    return (
+      <Wrapper>
+        <Loading />
+      </Wrapper>
+    );
+  }
 
   return (
     <Wrapper className="section">

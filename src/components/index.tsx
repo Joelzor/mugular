@@ -6,6 +6,7 @@ import Hero from "./Hero";
 import Featured from "./Featured";
 import Services from "./Services";
 import ContactForm from "./ContactForm";
+import Loading from "./Loading";
 
 export {
   Navbar,
@@ -16,4 +17,5 @@ export {
   Featured,
   Services,
   ContactForm,
+  Loading,
 };
