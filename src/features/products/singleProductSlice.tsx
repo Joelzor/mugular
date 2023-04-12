@@ -13,12 +13,12 @@ const initialState: SingleProductInterface = {
   singleProduct: {},
 };
 
-export const getProducts = createAsyncThunk(
+export const getSingleProduct = createAsyncThunk(
   "products/getSingleProduct",
-  async (id, thunkAPI) => {
+  async (id: string, thunkAPI) => {
     try {
       const response = await axios(
-        `http://localhost:8888/.netlify/functions/single-product${id}`
+        `http://localhost:8888/.netlify/functions/single-product?id=${id}`
       );
 
       return response.data;
@@ -34,14 +34,14 @@ const singleProductSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getProducts.pending, (state) => {
+      .addCase(getSingleProduct.pending, (state) => {
         state.singleProductLoading = true;
       })
-      .addCase(getProducts.fulfilled, (state, action) => {
+      .addCase(getSingleProduct.fulfilled, (state, action) => {
         state.singleProductLoading = false;
         state.singleProduct = action.payload;
       })
-      .addCase(getProducts.rejected, (state) => {
+      .addCase(getSingleProduct.rejected, (state) => {
         state.singleProductLoading = false;
         state.singleProductError = true;
       });
