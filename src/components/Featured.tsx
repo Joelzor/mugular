@@ -4,9 +4,11 @@ import Product from "./Product";
 import Loading from "./Loading";
 
 const Featured = () => {
-  const { featuredProducts } = useAppSelector((store) => store.products);
+  const { featuredProducts, productsLoading: loading } = useAppSelector(
+    (store) => store.products
+  );
 
-  if (featuredProducts.length === 0) {
+  if (loading) {
     return (
       <Wrapper>
         <Loading />

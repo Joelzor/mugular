@@ -7,6 +7,7 @@ import Featured from "./Featured";
 import Services from "./Services";
 import ContactForm from "./ContactForm";
 import Loading from "./Loading";
+import ProductImages from "./ProductImages";
 
 export {
   Navbar,
@@ -18,4 +19,5 @@ export {
   Services,
   ContactForm,
   Loading,
+  ProductImages,
 };

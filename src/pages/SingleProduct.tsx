@@ -1,23 +1,30 @@
 import { useEffect } from "react";
 import styled from "styled-components";
 import { useAppSelector, useAppDispatch } from "../hooks";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getSingleProduct } from "../features/products/singleProductSlice";
-import { Link } from "react-router-dom";
 import { formatPrice } from "../utils/helpers";
+import { Loading, ProductImages } from "../components";
 
 const SingleProduct = () => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
-  const { singleProduct: product } = useAppSelector(
-    (store) => store.singleProduct
-  );
+  const { singleProduct: product, singleProductLoading: loading } =
+    useAppSelector((store) => store.singleProduct);
 
   useEffect(() => {
     if (id) {
       dispatch(getSingleProduct(id));
     }
   }, [id]);
+
+  if (loading) {
+    return (
+      <Wrapper>
+        <Loading />
+      </Wrapper>
+    );
+  }
 
   const {
     name,
@@ -30,8 +37,6 @@ const SingleProduct = () => {
     images,
   } = product;
 
-  console.log(product);
-
   return (
     <Wrapper>
       <div className="section section-center page">
@@ -39,7 +44,7 @@ const SingleProduct = () => {
           back to products
         </Link>
         <div className="product-center">
-          <div></div>
+          <ProductImages images={images} />
           <section className="content">
             <h2>{name} Mug</h2>
             <h5 className="price">{formatPrice(price)}</h5>
@@ -66,14 +71,17 @@ const Wrapper = styled.main`
     gap: 4rem;
     margin-top: 2rem;
   }
+
   .price {
     color: var(--primary-500);
     font-weight: 600;
   }
+
   .desc {
     line-height: 2;
     max-width: 45em;
   }
+
   .info {
     text-transform: capitalize;
     width: 300px;
@@ -89,6 +97,7 @@ const Wrapper = styled.main`
       grid-template-columns: 1fr 1fr;
       align-items: center;
     }
+
     .price {
       font-size: 1.25rem;
     }
