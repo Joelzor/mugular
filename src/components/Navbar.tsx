@@ -14,7 +14,9 @@ const Navbar = () => {
     <Wrapper>
       <div className="nav-center">
         <div className="nav-header">
-          <h3>Mugular</h3>
+          <h3>
+            <span className="logo-span">Mug</span>ular
+          </h3>
           <button
             className="nav-toggle"
             onClick={() => dispatch(openSidebar())}
@@ -52,6 +54,10 @@ const Wrapper = styled.nav`
   align-items: center;
   justify-content: center;
 
+  .logo-span {
+    color: var(--primary-500);
+  }
+
   .nav-center {
     width: 90vw;
     margin: 0 auto;
@@ -67,6 +73,7 @@ const Wrapper = styled.nav`
     }
     h3 {
       margin-top: 24px;
+      font-weight: 600;
     }
   }
   .nav-toggle {
