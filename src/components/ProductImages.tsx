@@ -1,17 +1,18 @@
-import { useState } from "react";
+import { Key, useState } from "react";
 import styled from "styled-components";
+import { ImageI } from "../interfaces/Product";
 
 const ProductImages = ({ images = [] }) => {
-  const [main, setMain] = useState(images[0]);
+  const [main, setMain] = useState<ImageI>(images[0]);
 
   return (
     <Wrapper>
-      <img src={main?.url} alt="product" className="main" />
+      <img src={main.url} alt="product" className="main" />
       <div className="gallery">
-        {images.map((image, index) => {
+        {images.map((image: { url: string; filename: string }, index) => {
           return (
             <img
-              src={image?.url}
+              src={image.url}
               alt={image.filename}
               key={index}
               onClick={() => setMain(images[index])}

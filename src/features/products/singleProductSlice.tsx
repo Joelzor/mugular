@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { ProductI } from "../../interfaces/Product";
 
 interface SingleProductInterface {
   singleProductLoading: boolean;
