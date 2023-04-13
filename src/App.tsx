@@ -11,14 +11,20 @@ import {
 } from "./pages";
 import { Navbar, Footer, Sidebar } from "./components";
 import { getProducts } from "./features/products/productsSlice";
-import { useAppDispatch } from "./hooks";
+import { transferProducts } from "./features/filters/filterSlice";
+import { useAppDispatch, useAppSelector } from "./hooks";
 
 const App = () => {
   const dispatch = useAppDispatch();
+  const { products } = useAppSelector((store) => store.products);
 
   useEffect(() => {
     dispatch(getProducts());
   }, []);
+
+  useEffect(() => {
+    dispatch(transferProducts());
+  }, [products]);
 
   return (
     <>
