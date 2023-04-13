@@ -4,7 +4,7 @@ import { useAppSelector, useAppDispatch } from "../hooks";
 import { useParams, Link } from "react-router-dom";
 import { getSingleProduct } from "../features/products/singleProductSlice";
 import { formatPrice } from "../utils/helpers";
-import { Loading, ProductImages } from "../components";
+import { Loading, ProductImages, Stars, AddToCart } from "../components";
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -47,6 +47,7 @@ const SingleProduct = () => {
           <ProductImages images={images} />
           <section className="content">
             <h2>{name} Mug</h2>
+            <Stars stars={stars} reviews={reviews} />
             <h5 className="price">{formatPrice(price)}</h5>
             <p className="desc">{description}</p>
             <p className="info">
@@ -58,6 +59,7 @@ const SingleProduct = () => {
               {sku}
             </p>
             <hr />
+            {stock > 0 && <AddToCart />}
           </section>
         </div>
       </div>

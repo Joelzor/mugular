@@ -8,6 +8,8 @@ import Services from "./Services";
 import ContactForm from "./ContactForm";
 import Loading from "./Loading";
 import ProductImages from "./ProductImages";
+import Stars from "./Stars";
+import AddToCart from "./AddToCart";
 
 export {
   Navbar,
@@ -20,4 +22,6 @@ export {
   ContactForm,
   Loading,
   ProductImages,
+  Stars,
+  AddToCart,
 };
