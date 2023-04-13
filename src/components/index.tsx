@@ -10,6 +10,7 @@ import Loading from "./Loading";
 import ProductImages from "./ProductImages";
 import Stars from "./Stars";
 import AddToCart from "./AddToCart";
+import Amounts from "./Amounts";
 
 export {
   Navbar,
@@ -24,4 +25,5 @@ export {
   ProductImages,
   Stars,
   AddToCart,
+  Amounts,
 };
