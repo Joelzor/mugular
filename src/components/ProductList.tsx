@@ -11,6 +11,10 @@ const ProductList = () => {
     return <h5>Sorry, no products matched your search</h5>;
   }
 
+  if (!grid) {
+    return <ListView products={products} />;
+  }
+
   return <GridView products={products} />;
 };
 
