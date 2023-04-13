@@ -1,5 +1,17 @@
+import { useAppSelector } from "../hooks";
+import GridView from "./GridView";
+import ListView from "./ListView";
+
 const ProductList = () => {
-  return <div>ProductList</div>;
+  const { filteredProducts: products, grid } = useAppSelector(
+    (store) => store.filters
+  );
+
+  if (products.length < 1) {
+    return <h5>Sorry, no products matched your search</h5>;
+  }
+
+  return <GridView products={products} />;
 };
 
 export default ProductList;
