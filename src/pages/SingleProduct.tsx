@@ -40,9 +40,9 @@ const SingleProduct = () => {
   return (
     <Wrapper>
       <div className="section section-center page">
-        <Link to="/products" className="btn">
+        {/* <Link to="/products" className="btn">
           back to products
-        </Link>
+        </Link> */}
         <div className="product-center">
           <ProductImages images={images} />
           <section className="content">
@@ -72,6 +72,10 @@ const Wrapper = styled.main`
     display: grid;
     gap: 4rem;
     margin-top: 2rem;
+  }
+
+  .content {
+    align-self: start;
   }
 
   .price {
