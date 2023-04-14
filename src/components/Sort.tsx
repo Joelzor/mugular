@@ -15,7 +15,7 @@ const Sort = () => {
   } = useAppSelector((store) => store.filters);
   const dispatch = useAppDispatch();
 
-  const updateSort = (e): void => {
+  const updateSort = (e: any): void => {
     const value = e.target.value;
 
     dispatch(setSort(value));

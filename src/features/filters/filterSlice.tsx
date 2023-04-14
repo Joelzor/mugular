@@ -1,6 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { ProductI } from "../../interfaces/Product";
 
-const initialState = {
+interface FiltersInterface {
+  allProducts: ProductI[];
+  filteredProducts: ProductI[];
+  grid: boolean;
+  sort: string;
+}
+
+const initialState: FiltersInterface = {
   allProducts: [],
   filteredProducts: [],
   grid: true,
@@ -33,6 +41,32 @@ const filterSlice = createSlice({
     setSort: (state, action) => {
       state.sort = action.payload;
     },
+    sortItems: (state) => {
+      console.log("sorting items");
+      let tempProducts = [...state.filteredProducts];
+
+      if (state.sort === "price-lowest") {
+        tempProducts = tempProducts.sort((a, b) => a.price - b.price);
+      }
+
+      if (state.sort === "price-highest") {
+        tempProducts = tempProducts.sort((a, b) => b.price - a.price);
+      }
+
+      if (state.sort === "name-a") {
+        tempProducts = tempProducts.sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
+      }
+
+      if (state.sort === "name-z") {
+        tempProducts = tempProducts.sort((a, b) =>
+          b.name.localeCompare(a.name)
+        );
+      }
+
+      state.filteredProducts = tempProducts;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(transferProducts.fulfilled, (state, action) => {
@@ -43,4 +77,5 @@ const filterSlice = createSlice({
 });
 
 export default filterSlice.reducer;
-export const { setSort, setGridView, setListView } = filterSlice.actions;
+export const { setSort, setGridView, setListView, sortItems } =
+  filterSlice.actions;

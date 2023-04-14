@@ -1,7 +1,17 @@
 import styled from "styled-components";
 import { Filters, ProductList, Sort } from "../components";
+import { useAppSelector, useAppDispatch } from "../hooks";
+import { sortItems } from "../features/filters/filterSlice";
+import { useEffect } from "react";
 
 const Products = () => {
+  const { sort } = useAppSelector((store) => store.filters);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(sortItems());
+  }, [sort]);
+
   return (
     <main>
       <Wrapper className="page">

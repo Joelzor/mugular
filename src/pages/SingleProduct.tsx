@@ -5,7 +5,6 @@ import { useParams, Link } from "react-router-dom";
 import { getSingleProduct } from "../features/products/singleProductSlice";
 import { formatPrice } from "../utils/helpers";
 import { Loading, ProductImages, Stars, AddToCart } from "../components";
-import { ProductI } from "../interfaces/Product";
 
 const SingleProduct = () => {
   const { id } = useParams();

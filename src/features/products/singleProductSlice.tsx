@@ -5,13 +5,24 @@ import { ProductI } from "../../interfaces/Product";
 interface SingleProductInterface {
   singleProductLoading: boolean;
   singleProductError: boolean;
-  singleProduct: {};
+  singleProduct: ProductI;
 }
 
 const initialState: SingleProductInterface = {
   singleProductLoading: false,
   singleProductError: false,
-  singleProduct: {},
+  singleProduct: {
+    category: "",
+    id: "",
+    description: "",
+    featured: false,
+    name: "",
+    price: 0,
+    reviews: 0,
+    stars: 0,
+    stock: 0,
+    images: [],
+  },
 };
 
 export const getSingleProduct = createAsyncThunk(
