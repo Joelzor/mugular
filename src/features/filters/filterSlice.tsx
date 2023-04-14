@@ -6,6 +6,15 @@ interface FiltersInterface {
   filteredProducts: ProductI[];
   grid: boolean;
   sort: string;
+  filters: {
+    text: string;
+    category: string;
+    color: string;
+    min_price: number;
+    max_price: number;
+    price: number;
+    shipping: boolean;
+  };
 }
 
 const initialState: FiltersInterface = {
@@ -13,6 +22,15 @@ const initialState: FiltersInterface = {
   filteredProducts: [],
   grid: true,
   sort: "price-lowest",
+  filters: {
+    text: "",
+    category: "all",
+    color: "all",
+    min_price: 0,
+    max_price: 0,
+    price: 0,
+    shipping: false,
+  },
 };
 
 export const transferProducts = createAsyncThunk(

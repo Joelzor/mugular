@@ -17,7 +17,9 @@ const Sidebar = () => {
         className={`${isSidebarOpen ? "sidebar show-sidebar" : "sidebar"}`}
       >
         <div className="sidebar-header">
-          <h3>Mugular</h3>
+          <h3>
+            <span className="logo-span">Mug</span>ular
+          </h3>
           <button
             className="close-btn"
             type="button"
@@ -56,6 +58,11 @@ const Sidebar = () => {
 
 const SidebarContainer = styled.div`
   text-align: center;
+
+  .logo-span {
+    color: var(--primary-500);
+  }
+
   .sidebar-header {
     display: flex;
     justify-content: space-between;
@@ -64,8 +71,10 @@ const SidebarContainer = styled.div`
 
     h3 {
       margin-top: 20px;
+      font-weight: 600;
     }
   }
+
   .close-btn {
     font-size: 2rem;
     background: transparent;
@@ -76,16 +85,20 @@ const SidebarContainer = styled.div`
     color: var(--red-dark);
     margin-top: 0.2rem;
   }
+
   .close-btn:hover {
     color: var(--red-light);
   }
+
   .logo {
     justify-self: center;
     height: 45px;
   }
+
   .links {
     margin-bottom: 2rem;
   }
+
   .links a {
     display: block;
     text-align: left;
@@ -115,13 +128,16 @@ const SidebarContainer = styled.div`
     transform: translate(-100%);
     z-index: -1;
   }
+
   .show-sidebar {
     transform: translate(0);
     z-index: 100;
   }
+
   .cart-btn-wrapper {
     margin: 2rem auto;
   }
+
   @media screen and (min-width: 992px) {
     .sidebar {
       display: none;

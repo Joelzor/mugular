@@ -76,6 +76,7 @@ const Wrapper = styled.nav`
       font-weight: 600;
     }
   }
+
   .nav-toggle {
     background: transparent;
     border: transparent;
@@ -85,21 +86,26 @@ const Wrapper = styled.nav`
       font-size: 2rem;
     }
   }
+
   .nav-links {
     display: none;
   }
+
   .cart-btn-wrapper {
     display: none;
   }
+
   @media (min-width: 992px) {
     .nav-toggle {
       display: none;
     }
+
     .nav-center {
       display: grid;
       grid-template-columns: auto 1fr auto;
       align-items: center;
     }
+
     .nav-links {
       display: flex;
       justify-content: center;
@@ -117,6 +123,7 @@ const Wrapper = styled.nav`
         }
       }
     }
+
     .cart-btn-wrapper {
       display: grid;
     }
