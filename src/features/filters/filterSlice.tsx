@@ -24,6 +24,12 @@ const filterSlice = createSlice({
   name: "filters",
   initialState,
   reducers: {
+    setGridView: (state) => {
+      state.grid = true;
+    },
+    setListView: (state) => {
+      state.grid = false;
+    },
     setSort: (state, action) => {
       state.sort = action.payload;
     },
@@ -37,4 +43,4 @@ const filterSlice = createSlice({
 });
 
 export default filterSlice.reducer;
-export const { setSort } = filterSlice.actions;
+export const { setSort, setGridView, setListView } = filterSlice.actions;

@@ -1,8 +1,11 @@
 import { BsFillGridFill, BsList } from "react-icons/bs";
 import styled from "styled-components";
 import { useAppSelector, useAppDispatch } from "../hooks";
-import { setSort } from "../features/filters/filterSlice";
-import { ChangeEvent } from "react";
+import {
+  setSort,
+  setGridView,
+  setListView,
+} from "../features/filters/filterSlice";
 
 const Sort = () => {
   const {
@@ -21,10 +24,18 @@ const Sort = () => {
   return (
     <Wrapper>
       <div className="btn-container">
-        <button type="button" className={`${grid ? "active" : null}`}>
+        <button
+          type="button"
+          className={`${grid ? "active" : null}`}
+          onClick={() => dispatch(setGridView())}
+        >
           <BsFillGridFill />
         </button>
-        <button type="button" className={`${!grid ? "active" : null}`}>
+        <button
+          type="button"
+          className={`${!grid ? "active" : null}`}
+          onClick={() => dispatch(setListView())}
+        >
           <BsList />
         </button>
       </div>
