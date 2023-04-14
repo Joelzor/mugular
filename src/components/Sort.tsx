@@ -1,11 +1,22 @@
 import { BsFillGridFill, BsList } from "react-icons/bs";
 import styled from "styled-components";
-import { useAppSelector } from "../hooks";
+import { useAppSelector, useAppDispatch } from "../hooks";
+import { setSort } from "../features/filters/filterSlice";
+import { ChangeEvent } from "react";
 
 const Sort = () => {
-  const { filteredProducts: products, grid } = useAppSelector(
-    (store) => store.filters
-  );
+  const {
+    filteredProducts: products,
+    grid,
+    sort,
+  } = useAppSelector((store) => store.filters);
+  const dispatch = useAppDispatch();
+
+  const updateSort = (e): void => {
+    const value = e.target.value;
+
+    dispatch(setSort(value));
+  };
 
   return (
     <Wrapper>
@@ -21,7 +32,13 @@ const Sort = () => {
       <hr />
       <form>
         <label htmlFor="sort">sort by</label>
-        <select name="sort" id="sort" className="sort-input">
+        <select
+          name="sort"
+          id="sort"
+          className="sort-input"
+          value={sort}
+          onChange={updateSort}
+        >
           <option value="price-lowest">price (lowest)</option>
           <option value="price-highest">price (highest)</option>
           <option value="name-a">name (a-z)</option>
