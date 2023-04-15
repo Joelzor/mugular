@@ -1,7 +1,20 @@
 import styled from "styled-components";
 import { useAppSelector, useAppDispatch } from "../hooks";
+import { updateFilters } from "../features/filters/filterSlice";
 
 const Filters = () => {
+  const {
+    filters: { text, category, color, min_price, max_price, price, shipping },
+  } = useAppSelector((store) => store.filters);
+  const dispatch = useAppDispatch();
+
+  const handleChange = (e: any) => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    dispatch(updateFilters({ name, value }));
+  };
+
   return (
     <Wrapper>
       <div className="content">
@@ -12,6 +25,8 @@ const Filters = () => {
               name="text"
               placeholder="search"
               className="search-input"
+              value={text}
+              onChange={handleChange}
             />
           </div>
           <div className="form-control"></div>

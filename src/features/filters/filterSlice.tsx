@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { ProductI } from "../../interfaces/Product";
+import { RootState } from "../../store";
 
 interface FiltersInterface {
   allProducts: ProductI[];
@@ -60,7 +61,6 @@ const filterSlice = createSlice({
       state.sort = action.payload;
     },
     sortItems: (state) => {
-      console.log("sorting items");
       let tempProducts = [...state.filteredProducts];
 
       if (state.sort === "price-lowest") {
@@ -85,6 +85,12 @@ const filterSlice = createSlice({
 
       state.filteredProducts = tempProducts;
     },
+    updateFilters: (state, action) => {
+      const { name, value } = action.payload;
+      // @ts-ignore
+      // only ignoring for now until I learn more TS
+      state.filters[name] = value;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(transferProducts.fulfilled, (state, action) => {
@@ -95,5 +101,5 @@ const filterSlice = createSlice({
 });
 
 export default filterSlice.reducer;
-export const { setSort, setGridView, setListView, sortItems } =
+export const { setSort, setGridView, setListView, sortItems, updateFilters } =
   filterSlice.actions;
