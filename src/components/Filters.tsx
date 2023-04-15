@@ -1,19 +1,27 @@
 import styled from "styled-components";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { updateFilters } from "../features/filters/filterSlice";
+import { getUniqueValues } from "../utils/helpers";
 
 const Filters = () => {
   const {
     filters: { text, category, color, min_price, max_price, price, shipping },
+    allProducts,
   } = useAppSelector((store) => store.filters);
   const dispatch = useAppDispatch();
 
   const handleChange = (e: any) => {
     const name = e.target.name;
-    const value = e.target.value;
+    let value = e.target.value;
+
+    if (name === "category") {
+      value = e.target.textContent;
+    }
 
     dispatch(updateFilters({ name, value }));
   };
+
+  const categories = getUniqueValues(allProducts, "category");
 
   return (
     <Wrapper>
@@ -29,7 +37,24 @@ const Filters = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="form-control"></div>
+          <div className="form-control">
+            <h5>Category</h5>
+            {categories.map((cat, index) => {
+              return (
+                <button
+                  key={index}
+                  type="button"
+                  name="category"
+                  className={`${
+                    category === cat.toLowerCase() ? "active" : null
+                  }`}
+                  onClick={handleChange}
+                >
+                  {cat}
+                </button>
+              );
+            })}
+          </div>
         </form>
       </div>
     </Wrapper>
@@ -55,6 +80,23 @@ const Wrapper = styled.section`
   .search-input::placeholder {
     text-transform: capitalize;
     color: var(--grey-800);
+  }
+
+  button {
+    display: block;
+    margin: 0.25em 0;
+    padding: 0.25rem 0;
+    text-transform: capitalize;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid transparent;
+    letter-spacing: var(--letterSpacing);
+    color: var(--grey-500);
+    cursor: pointer;
+  }
+
+  .active {
+    border-color: var(--grey-500);
   }
 
   @media (min-width: 768px) {
