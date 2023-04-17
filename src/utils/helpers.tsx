@@ -10,5 +10,5 @@ export const formatPrice = (number: number) => {
 export const getUniqueValues = (data: ProductI[], type: string) => {
   const values = data.map((product) => product[type as keyof ProductI]);
 
-  return ["all", ...new Set(values)];
+  return ["all", ...new Set(values)] as string[];
 };

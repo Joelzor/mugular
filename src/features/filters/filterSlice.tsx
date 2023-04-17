@@ -96,6 +96,10 @@ const filterSlice = createSlice({
     builder.addCase(transferProducts.fulfilled, (state, action) => {
       state.allProducts = action.payload;
       state.filteredProducts = action.payload;
+
+      const prices = action.payload.map((product: ProductI) => product.price);
+      state.filters.max_price = Math.max(...prices);
+      state.filters.price = Math.max(...prices);
     });
   },
 });

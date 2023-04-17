@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { updateFilters } from "../features/filters/filterSlice";
-import { getUniqueValues } from "../utils/helpers";
+import { formatPrice, getUniqueValues } from "../utils/helpers";
 
 const Filters = () => {
   const {
@@ -16,6 +16,10 @@ const Filters = () => {
 
     if (name === "category") {
       value = e.target.textContent;
+    }
+
+    if (name === "price") {
+      value = Number(value);
     }
 
     dispatch(updateFilters({ name, value }));
@@ -38,7 +42,7 @@ const Filters = () => {
             />
           </div>
           <div className="form-control">
-            <h5>Category</h5>
+            <h5>category</h5>
             {categories.map((cat, index) => {
               return (
                 <button
@@ -54,6 +58,18 @@ const Filters = () => {
                 </button>
               );
             })}
+          </div>
+          <div className="form-control">
+            <h5>price</h5>
+            <p className="price">{formatPrice(price)}</p>
+            <input
+              type="range"
+              name="price"
+              min={min_price}
+              max={max_price}
+              value={price}
+              onChange={handleChange}
+            />
           </div>
         </form>
       </div>
@@ -97,6 +113,27 @@ const Wrapper = styled.section`
 
   .active {
     border-color: var(--grey-500);
+  }
+
+  .price {
+    margin-bottom: 0.25rem;
+  }
+
+  .shipping {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    text-transform: capitalize;
+    column-gap: 0.5rem;
+    font-size: 1rem;
+    max-width: 200px;
+  }
+
+  .clear-btn {
+    background: var(--red-dark);
+    color: var(--white);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--borderRadius);
   }
 
   @media (min-width: 768px) {
