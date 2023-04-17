@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className="nav-center">
         <div className="nav-header">
           <h3>
-            <span className="logo-span">Mug</span>ular
+            <span className="logo-span">mug</span>ular
           </h3>
           <button
             className="nav-toggle"
@@ -74,6 +74,7 @@ const Wrapper = styled.nav`
     h3 {
       margin-top: 24px;
       font-weight: 600;
+      text-transform: none;
     }
   }
 

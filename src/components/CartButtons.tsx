@@ -2,9 +2,11 @@ import { FaShoppingCart, FaUserMinus, FaUserPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useAppSelector } from "../hooks";
 
 const CartButtons = () => {
   const { user, loginWithRedirect, logout } = useAuth0();
+  const { totalItems } = useAppSelector((store) => store.cart);
 
   return (
     <Wrapper className="cart-btn-wrapper">
@@ -12,7 +14,7 @@ const CartButtons = () => {
         Cart
         <span className="cart-container">
           <FaShoppingCart />
-          <span className="cart-value">5</span>
+          <span className="cart-value">{totalItems}</span>
         </span>
       </Link>
       {user ? (
