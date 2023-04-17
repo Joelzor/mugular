@@ -29,7 +29,7 @@ const Wrapper = styled.div`
 
       h5 {
         color: var(--grey-500);
-        font-weight: 400;
+        font-weight: 600;
       }
     }
 
