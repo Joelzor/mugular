@@ -1,11 +1,16 @@
 import styled from "styled-components";
 import { formatPrice } from "../utils/helpers";
 import { Link } from "react-router-dom";
+import { ProductListI, ProductI } from "../interfaces/Product";
 
-const ListView = ({ products = [] }) => {
+interface ListViewProps {
+  products: ProductListI[];
+}
+
+const ListView = ({ products = [] }: ListViewProps) => {
   return (
     <Wrapper>
-      {products.map((product) => {
+      {products.map((product: ProductListI) => {
         const { id, image, name, price, description } = product;
         return (
           <article key={id}>
@@ -58,7 +63,7 @@ const Wrapper = styled.section`
   }
 
   .btn {
-    font-size: 0.5rem;
+    font-size: 0.8rem;
     padding: 0.25rem 0.5rem;
   }
 

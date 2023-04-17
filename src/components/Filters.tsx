@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useAppSelector, useAppDispatch } from "../hooks";
-import { updateFilters } from "../features/filters/filterSlice";
+import { updateFilters, clearFilters } from "../features/filters/filterSlice";
 import { formatPrice, getUniqueValues } from "../utils/helpers";
 
 const Filters = () => {
@@ -86,7 +86,11 @@ const Filters = () => {
             />
           </div>
         </form>
-        <button type="button" className="clear-btn">
+        <button
+          type="button"
+          className="clear-btn"
+          onClick={() => dispatch(clearFilters())}
+        >
           clear filters
         </button>
       </div>

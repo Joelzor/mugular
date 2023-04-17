@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { ProductI } from "../../interfaces/Product";
+import { ProductListI, ProductI } from "../../interfaces/Product";
 import { RootState } from "../../store";
 
 interface FiltersInterface {
-  allProducts: ProductI[];
-  filteredProducts: ProductI[];
+  allProducts: ProductListI[];
+  filteredProducts: ProductListI[];
   grid: boolean;
   sort: string;
   filters: {
@@ -123,13 +123,21 @@ const filterSlice = createSlice({
 
       state.filteredProducts = tempProducts;
     },
+    clearFilters: (state) => {
+      state.filters.text = "";
+      state.filters.category = "all";
+      state.filters.price = state.filters.max_price;
+      state.filters.shipping = false;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(transferProducts.fulfilled, (state, action) => {
       state.allProducts = action.payload;
       state.filteredProducts = action.payload;
 
-      const prices = action.payload.map((product: ProductI) => product.price);
+      const prices = action.payload.map(
+        (product: ProductListI) => product.price
+      );
       state.filters.max_price = Math.max(...prices);
       state.filters.price = Math.max(...prices);
     });
@@ -144,4 +152,5 @@ export const {
   sortItems,
   updateFilters,
   filterProducts,
+  clearFilters,
 } = filterSlice.actions;

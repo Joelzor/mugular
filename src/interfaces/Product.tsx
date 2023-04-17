@@ -12,6 +12,20 @@ export interface ProductI {
   shipping: boolean;
 }
 
+export interface ProductListI {
+  category: string;
+  id: string;
+  description: string;
+  featured: boolean;
+  name: string;
+  price: number;
+  reviews: number;
+  stars: number;
+  stock: number;
+  image: string;
+  shipping: boolean;
+}
+
 export interface ImageI {
   filename: string;
   id: string;
