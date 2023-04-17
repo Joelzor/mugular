@@ -7,8 +7,6 @@ const airtable = new Airtable({
   .base(process.env.VITE_AIRTABLE_BASE_ID)
   .table(process.env.VITE_AIRTABLE_TABLE);
 
-console.log();
-
 exports.handler = async (event, context, cb) => {
   try {
     const response = await airtable.list({ maxRecords: 200 });
