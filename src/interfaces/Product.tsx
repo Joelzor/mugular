@@ -9,6 +9,7 @@ export interface ProductI {
   stars: number;
   stock: number;
   images: ImageI[];
+  shipping: boolean;
 }
 
 export interface ImageI {

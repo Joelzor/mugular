@@ -105,6 +105,22 @@ const filterSlice = createSlice({
         });
       }
 
+      if (category !== "all") {
+        tempProducts = tempProducts.filter((product) => {
+          return product.category === category;
+        });
+      }
+
+      tempProducts = tempProducts.filter((product) => {
+        return product.price <= price;
+      });
+
+      if (shipping) {
+        tempProducts = tempProducts.filter((product) => {
+          return product.shipping === true;
+        });
+      }
+
       state.filteredProducts = tempProducts;
     },
   },
