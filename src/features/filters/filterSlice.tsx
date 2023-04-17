@@ -91,6 +91,22 @@ const filterSlice = createSlice({
       // only ignoring for now until I learn more TS
       state.filters[name] = value;
     },
+    filterProducts: (state) => {
+      const {
+        allProducts,
+        filters: { text, category, price, shipping },
+      } = state;
+
+      let tempProducts = [...allProducts];
+
+      if (text) {
+        tempProducts = tempProducts.filter((product) => {
+          return product.name.toLowerCase().includes(text.toLowerCase());
+        });
+      }
+
+      state.filteredProducts = tempProducts;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(transferProducts.fulfilled, (state, action) => {
@@ -105,5 +121,11 @@ const filterSlice = createSlice({
 });
 
 export default filterSlice.reducer;
-export const { setSort, setGridView, setListView, sortItems, updateFilters } =
-  filterSlice.actions;
+export const {
+  setSort,
+  setGridView,
+  setListView,
+  sortItems,
+  updateFilters,
+  filterProducts,
+} = filterSlice.actions;

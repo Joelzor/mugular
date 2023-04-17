@@ -1,16 +1,19 @@
 import styled from "styled-components";
 import { Filters, ProductList, Sort } from "../components";
 import { useAppSelector, useAppDispatch } from "../hooks";
-import { sortItems } from "../features/filters/filterSlice";
+import { sortItems, filterProducts } from "../features/filters/filterSlice";
 import { useEffect } from "react";
 
 const Products = () => {
-  const { sort } = useAppSelector((store) => store.filters);
+  const { sort, filters, allProducts } = useAppSelector(
+    (store) => store.filters
+  );
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    dispatch(filterProducts());
     dispatch(sortItems());
-  }, [sort]);
+  }, [sort, filters, allProducts]);
 
   return (
     <main>

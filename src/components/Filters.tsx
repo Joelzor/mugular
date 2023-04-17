@@ -22,6 +22,10 @@ const Filters = () => {
       value = Number(value);
     }
 
+    if (name === "shipping") {
+      value = e.target.checked;
+    }
+
     dispatch(updateFilters({ name, value }));
   };
 
@@ -71,7 +75,20 @@ const Filters = () => {
               onChange={handleChange}
             />
           </div>
+          <div className="form-control shipping">
+            <label htmlFor="shipping">free shipping</label>
+            <input
+              type="checkbox"
+              name="shipping"
+              id="shipping"
+              onChange={handleChange}
+              checked={shipping}
+            />
+          </div>
         </form>
+        <button type="button" className="clear-btn">
+          clear filters
+        </button>
       </div>
     </Wrapper>
   );
@@ -80,6 +97,7 @@ const Filters = () => {
 const Wrapper = styled.section`
   .form-control {
     margin-bottom: 1.25rem;
+
     h5 {
       margin-bottom: 0.5rem;
     }
@@ -130,10 +148,15 @@ const Wrapper = styled.section`
   }
 
   .clear-btn {
-    background: var(--red-dark);
+    background: lightcoral;
     color: var(--white);
     padding: 0.25rem 0.5rem;
     border-radius: var(--borderRadius);
+    transition: all 1s;
+
+    &:hover {
+      background: var(--red-dark);
+    }
   }
 
   @media (min-width: 768px) {
