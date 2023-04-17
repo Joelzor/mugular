@@ -34,7 +34,7 @@ const ContactForm = () => {
 
 const Wrapper = styled.section`
   padding: 5rem 0;
-  background-color: var(--primary-100);
+  background-color: var(--primary-400);
 
   h3 {
     text-transform: none;
@@ -62,7 +62,6 @@ const Wrapper = styled.section`
 
   .form-input {
     border-right: none;
-    color: var(--grey-300);
     border-top-left-radius: var(--borderRadius);
     border-bottom-left-radius: var(--borderRadius);
   }

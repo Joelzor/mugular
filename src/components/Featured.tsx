@@ -32,7 +32,7 @@ const Featured = () => {
 };
 
 const Wrapper = styled.section`
-  background: var(--primary-100);
+  background: var(--primary-400);
 
   .featured {
     margin: 4rem auto;
@@ -41,6 +41,10 @@ const Wrapper = styled.section`
     img {
       height: 225px;
     }
+  }
+
+  .title-underline {
+    background-color: var(--primary-200);
   }
 
   .btn {
