@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { formatPrice } from "../utils/helpers";
 import Amounts from "./Amounts";
 import { FaTrash } from "react-icons/fa";
+import { toggleAmounts } from "../features/cart/cartSlice";
+import { useAppDispatch } from "../hooks";
 
 interface CartItemProps {
   id: string;
@@ -12,9 +14,15 @@ interface CartItemProps {
 }
 
 const CartItem = ({ id, image, name, price, amount }: CartItemProps) => {
-  const increase = () => {};
+  const dispatch = useAppDispatch();
 
-  const decrease = () => {};
+  const increase = () => {
+    dispatch(toggleAmounts({ id, type: "increase" }));
+  };
+
+  const decrease = () => {
+    dispatch(toggleAmounts({ id, type: "decrease" }));
+  };
 
   return (
     <Wrapper>

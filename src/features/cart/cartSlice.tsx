@@ -51,8 +51,35 @@ const cartSlice = createSlice({
         state.cart = [...state.cart, newCartItem];
       }
     },
+    toggleAmounts: (state, action) => {
+      const { id, type } = action.payload;
+
+      const temporaryCart = state.cart.map((cartItem) => {
+        if (cartItem.id === id) {
+          if (type === "increase") {
+            let newAmount = cartItem.amount + 1;
+            if (newAmount > cartItem.max) {
+              newAmount = cartItem.max;
+            }
+            return { ...cartItem, amount: newAmount };
+          }
+
+          if (type === "decrease") {
+            let newAmount = cartItem.amount - 1;
+            if (newAmount < 1) {
+              newAmount = 1;
+            }
+            return { ...cartItem, amount: newAmount };
+          }
+        } else {
+          return cartItem;
+        }
+      });
+
+      state.cart = temporaryCart as CartItemI[];
+    },
   },
 });
 
 export default cartSlice.reducer;
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, toggleAmounts } = cartSlice.actions;
