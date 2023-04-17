@@ -2,6 +2,8 @@ import { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Amounts from "./Amounts";
+import { addToCart } from "../features/cart/cartSlice";
+import { useAppDispatch } from "../hooks";
 
 interface AddToCartProps {
   product: {
@@ -12,8 +14,11 @@ interface AddToCartProps {
 
 const AddToCart = (props: AddToCartProps) => {
   const [amount, setAmount] = useState(1);
+  const dispatch = useAppDispatch();
 
   const { id, stock } = props.product;
+
+  const product = props.product;
 
   const increase = () => {
     setAmount((oldAmount) => {
@@ -40,7 +45,11 @@ const AddToCart = (props: AddToCartProps) => {
     <Wrapper>
       <div className="btn-container">
         <Amounts amount={amount} increase={increase} decrease={decrease} />
-        <Link to="/cart" className="btn">
+        <Link
+          to="/cart"
+          className="btn"
+          onClick={() => dispatch(addToCart({ id, amount, product }))}
+        >
           add to cart
         </Link>
         <button className="btn reset-btn" onClick={() => setAmount(1)}>
