@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { formatPrice } from "../utils/helpers";
+import Amounts from "./Amounts";
+import { FaTrash } from "react-icons/fa";
 
 interface CartItemProps {
   id: string;
@@ -10,6 +12,10 @@ interface CartItemProps {
 }
 
 const CartItem = ({ id, image, name, price, amount }: CartItemProps) => {
+  const increase = () => {};
+
+  const decrease = () => {};
+
   return (
     <Wrapper>
       <div className="title">
@@ -20,6 +26,11 @@ const CartItem = ({ id, image, name, price, amount }: CartItemProps) => {
         </div>
       </div>
       <h5 className="price">{formatPrice(price)}</h5>
+      <Amounts amount={amount} increase={increase} decrease={decrease} />
+      <h5 className="subtotal">{formatPrice(price * amount)}</h5>
+      <button className="remove-btn" type="button">
+        <FaTrash />
+      </button>
     </Wrapper>
   );
 };
@@ -50,6 +61,11 @@ const Wrapper = styled.article`
     object-fit: cover;
   }
 
+  h5 {
+    font-size: 0.75rem;
+    margin-bottom: 0;
+  }
+
   .price-small {
     color: var(--primary-500);
   }
@@ -58,10 +74,48 @@ const Wrapper = styled.article`
     display: none;
   }
 
+  .amount-btns {
+    width: 75px;
+
+    button {
+      width: 1rem;
+      height: 0.8rem;
+      font-size: 1rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .subtotal {
+    display: none;
+  }
+
+  .remove-btn {
+    color: var(--white);
+    background: transparent;
+    border: transparent;
+    letter-spacing: var(--letterSpacing);
+    background: var(--red-dark);
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--borderRadius);
+    font-size: 0.75rem;
+    cursor: pointer;
+  }
+
   @media (min-width: 776px) {
     grid-template-columns: 1fr 1fr 1fr 1fr auto;
     align-items: center;
     grid-template-rows: 75px;
+
+    img {
+      height: 100%;
+    }
 
     .title {
       height: 100%;
@@ -81,6 +135,28 @@ const Wrapper = styled.article`
       font-size: 1.2rem;
       color: var(--primary-500);
       font-weight: 400;
+    }
+
+    .amount-btns {
+      width: 100px;
+
+      button {
+        width: 1.5rem;
+        height: 1rem;
+        font-size: 1rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+    .subtotal {
+      display: block;
+      margin-bottom: 0;
+      color: var(--grey-500);
+      font-weight: 400;
+      font-size: 1.2rem;
     }
   }
 `;
