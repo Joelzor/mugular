@@ -12,11 +12,13 @@ import {
 import { Navbar, Footer, Sidebar } from "./components";
 import { getProducts } from "./features/products/productsSlice";
 import { transferProducts } from "./features/filters/filterSlice";
+import { calculateTotals } from "./features/cart/cartSlice";
 import { useAppDispatch, useAppSelector } from "./hooks";
 
 const App = () => {
   const dispatch = useAppDispatch();
   const { products } = useAppSelector((store) => store.products);
+  const { cart } = useAppSelector((store) => store.cart);
 
   useEffect(() => {
     dispatch(getProducts());
@@ -25,6 +27,10 @@ const App = () => {
   useEffect(() => {
     dispatch(transferProducts());
   }, [products]);
+
+  useEffect(() => {
+    dispatch(calculateTotals());
+  }, [cart]);
 
   return (
     <>
