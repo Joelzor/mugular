@@ -21,7 +21,7 @@ interface FiltersInterface {
 const initialState: FiltersInterface = {
   allProducts: [],
   filteredProducts: [],
-  grid: true,
+  grid: false,
   sort: "price-lowest",
   filters: {
     text: "",

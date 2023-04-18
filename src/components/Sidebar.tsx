@@ -18,7 +18,7 @@ const Sidebar = () => {
       >
         <div className="sidebar-header">
           <h3>
-            <span className="logo-span">Mug</span>ular
+            <span className="logo-span">mug</span>ular
           </h3>
           <button
             className="close-btn"
@@ -72,6 +72,7 @@ const SidebarContainer = styled.div`
     h3 {
       margin-top: 20px;
       font-weight: 600;
+      text-transform: none;
     }
   }
 

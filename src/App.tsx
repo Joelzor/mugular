@@ -8,6 +8,7 @@ import {
   Cart,
   Checkout,
   Error,
+  PrivateRoute,
 } from "./pages";
 import { Navbar, Footer, Sidebar } from "./components";
 import { getProducts } from "./features/products/productsSlice";
@@ -43,7 +44,14 @@ const App = () => {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<SingleProduct />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route
+          path="/checkout"
+          element={
+            <PrivateRoute>
+              <Checkout />
+            </PrivateRoute>
+          }
+        />
         <Route path="*" element={<Error />} />
       </Routes>
       <Footer />
