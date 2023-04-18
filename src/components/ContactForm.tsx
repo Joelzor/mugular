@@ -1,10 +1,17 @@
 import styled from "styled-components";
+import { SlEnvolopeLetter } from "react-icons/sl";
 
 const ContactForm = () => {
   return (
     <Wrapper>
       <div className="section-center">
-        <h3>Join our newsletter and get 10% off</h3>
+        <h3>
+          Join our newsletter!
+          <span className="icon">
+            <SlEnvolopeLetter size={24} />
+          </span>
+        </h3>
+
         <div className="content">
           <p>
             Keep up to date with the latest Mugular news, including new
@@ -34,16 +41,20 @@ const ContactForm = () => {
 
 const Wrapper = styled.section`
   padding: 5rem 0;
-  background-color: var(--primary-400);
+  background-color: var(--primary-500);
 
   h3 {
     text-transform: none;
   }
 
+  .icon {
+    margin-left: 1rem;
+  }
+
   p {
     line-height: 2;
     max-width: 45em;
-    color: var(--grey-700);
+    color: var(--grey-800);
   }
 
   .contact-form {
@@ -77,7 +88,7 @@ const Wrapper = styled.section`
   }
 
   .submit-btn {
-    background: var(--primary-500);
+    background: var(--primary-300);
     text-transform: capitalize;
     letter-spacing: var(--letterSpacing);
     cursor: pointer;

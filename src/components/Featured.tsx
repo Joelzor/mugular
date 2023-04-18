@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useAppSelector } from "../hooks";
 import Product from "./Product";
 import Loading from "./Loading";
+import { Link } from "react-router-dom";
 
 const Featured = () => {
   const { featuredProducts, productsLoading: loading } = useAppSelector(
@@ -27,12 +28,15 @@ const Featured = () => {
           return <Product key={index} product={product} />;
         })}
       </div>
+      <Link to="/products" className="btn">
+        all products
+      </Link>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.section`
-  background: var(--primary-400);
+  background: var(--primary-500);
 
   .featured {
     margin: 4rem auto;
@@ -56,6 +60,13 @@ const Wrapper = styled.section`
     width: 148px;
     margin: 0 auto;
     text-align: center;
+    background-color: var(--grey-100);
+    color: var(--primary-500);
+    font-weight: bold;
+  }
+
+  .btn:hover {
+    background-color: var(--white);
   }
 
   @media (min-width: 576px) {

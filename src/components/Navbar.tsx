@@ -76,6 +76,7 @@ const Wrapper = styled.nav`
       margin-top: 24px;
       font-weight: 600;
       text-transform: none;
+      font-family: "Spectral", serif;
     }
   }
 
