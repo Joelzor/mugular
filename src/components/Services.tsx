@@ -19,9 +19,9 @@ const Services = () => {
             </span>
             <h4>our mission</h4>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi
-              reiciendis, cumque quod enim quos soluta atque totam similique
-              quia doloribus.
+              We aim to deliver the highest quality mugs that have ever graced
+              the tips of your lips, all at affordable prices with the
+              friendliest customer service.
             </p>
           </article>
           <article className="service">
@@ -30,9 +30,9 @@ const Services = () => {
             </span>
             <h4>our vision</h4>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi
-              reiciendis, cumque quod enim quos soluta atque totam similique
-              quia doloribus.
+              We want to become the premier mug company- when you think mugs,
+              you'll think Mugular. Soon, you'll be able to fully customise your
+              mug-shaped desires.
             </p>
           </article>
           <article className="service">
@@ -41,9 +41,9 @@ const Services = () => {
             </span>
             <h4>our history</h4>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi
-              reiciendis, cumque quod enim quos soluta atque totam similique
-              quia doloribus.
+              Founded in the ancient year of 2023, we have a long history of
+              delivering top beverage holders to hold anything from mead to
+              coffee.
             </p>
           </article>
         </div>

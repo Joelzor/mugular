@@ -37,6 +37,7 @@ const Featured = () => {
 
 const Wrapper = styled.section`
   background: var(--primary-500);
+  opacity: 0.9;
 
   .featured {
     margin: 4rem auto;

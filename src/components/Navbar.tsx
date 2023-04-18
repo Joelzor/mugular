@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { FaBars } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CartButtons from "./CartButtons";
 import { useAppDispatch } from "../hooks.tsx";
 import { openSidebar } from "../features/sidebar/sidebarSlice";
@@ -8,13 +8,18 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { user } = useAuth0();
+
+  const backHome = () => {
+    navigate("/");
+  };
 
   return (
     <Wrapper>
       <div className="nav-center">
         <div className="nav-header">
-          <h3>
+          <h3 onClick={backHome}>
             <span className="logo-span">mug</span>ular
           </h3>
           <button
@@ -68,15 +73,18 @@ const Wrapper = styled.nav`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     img {
       width: 175px;
       margin-left: -15px;
     }
+
     h3 {
       margin-top: 24px;
       font-weight: 600;
       text-transform: none;
       font-family: "Spectral", serif;
+      cursor: pointer;
     }
   }
 

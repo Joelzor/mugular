@@ -42,6 +42,7 @@ const ContactForm = () => {
 const Wrapper = styled.section`
   padding: 5rem 0;
   background-color: var(--primary-500);
+  opacity: 0.9;
 
   h3 {
     text-transform: none;
@@ -54,7 +55,7 @@ const Wrapper = styled.section`
   p {
     line-height: 2;
     max-width: 45em;
-    color: var(--grey-800);
+    color: var(--grey-900);
   }
 
   .contact-form {
@@ -88,7 +89,7 @@ const Wrapper = styled.section`
   }
 
   .submit-btn {
-    background: var(--primary-300);
+    background: var(--primary-500);
     text-transform: capitalize;
     letter-spacing: var(--letterSpacing);
     cursor: pointer;
