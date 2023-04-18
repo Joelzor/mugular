@@ -28,12 +28,26 @@ const Wrapper = styled.section`
   display: grid;
   gap: 4rem;
 
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
   img {
     width: 100%;
     display: block;
     border-radius: var(--borderRadius);
     height: 500px;
     object-fit: cover;
+  }
+
+  h2 {
+    animation: fadein 0.6s linear;
   }
 
   p {

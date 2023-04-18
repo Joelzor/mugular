@@ -35,6 +35,19 @@ const Wrapper = styled.section`
 
   h1 {
     font-weight: 700;
+    animation: slidein 0.6s ease-in;
+  }
+
+  @keyframes slidein {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateX(0%);
+      opacity: 1;
+    }
   }
 
   p {
@@ -44,6 +57,7 @@ const Wrapper = styled.section`
     color: var(--grey-500);
     font-size: 1rem;
   }
+
   @media (min-width: 992px) {
     height: calc(100vh - 5rem);
     grid-template-columns: 1fr 1fr;
