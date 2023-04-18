@@ -2,9 +2,11 @@ import styled from "styled-components";
 import { formatPrice } from "../utils/helpers";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../hooks";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const CartTotals = () => {
   const { totalAmount, shippingFee } = useAppSelector((store) => store.cart);
+  const { user, loginWithRedirect } = useAuth0();
 
   return (
     <Wrapper>
@@ -21,9 +23,19 @@ const CartTotals = () => {
             order total: <span>{formatPrice(totalAmount + shippingFee)}</span>
           </h4>
         </article>
-        <Link to="/checkout" className="btn">
-          proceed to checkout
-        </Link>
+        {user ? (
+          <Link to="/checkout" className="btn">
+            proceed to checkout
+          </Link>
+        ) : (
+          <button
+            type="button"
+            onClick={() => loginWithRedirect()}
+            className="btn"
+          >
+            log in
+          </button>
+        )}
       </div>
     </Wrapper>
   );
