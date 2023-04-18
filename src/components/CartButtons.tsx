@@ -2,11 +2,13 @@ import { FaShoppingCart, FaUserMinus, FaUserPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useAppSelector } from "../hooks";
+import { useAppDispatch, useAppSelector } from "../hooks";
+import { clearCart } from "../features/cart/cartSlice";
 
 const CartButtons = () => {
   const { user, loginWithRedirect, logout } = useAuth0();
   const { totalItems } = useAppSelector((store) => store.cart);
+  const dispatch = useAppDispatch();
 
   return (
     <Wrapper className="cart-btn-wrapper">
@@ -21,9 +23,10 @@ const CartButtons = () => {
         <button
           className="auth-btn"
           type="button"
-          onClick={() =>
-            logout({ logoutParams: { returnTo: window.location.origin } })
-          }
+          onClick={() => {
+            dispatch(clearCart());
+            logout({ logoutParams: { returnTo: window.location.origin } });
+          }}
         >
           Logout <FaUserMinus />
         </button>

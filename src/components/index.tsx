@@ -15,6 +15,7 @@ import Filters from "./Filters";
 import Sort from "./Sort";
 import ProductList from "./ProductList";
 import CartContent from "./CartContent";
+import StripeCheckout from "./StripeCheckout";
 
 export {
   Navbar,
@@ -34,4 +35,5 @@ export {
   Sort,
   ProductList,
   CartContent,
+  StripeCheckout,
 };
