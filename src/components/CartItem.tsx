@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { formatPrice } from "../utils/helpers";
 import Amounts from "./Amounts";
 import { FaTrash } from "react-icons/fa";
-import { toggleAmounts } from "../features/cart/cartSlice";
+import { toggleAmounts, deleteCartItem } from "../features/cart/cartSlice";
 import { useAppDispatch } from "../hooks";
 
 interface CartItemProps {
@@ -36,7 +36,11 @@ const CartItem = ({ id, image, name, price, amount }: CartItemProps) => {
       <h5 className="price">{formatPrice(price)}</h5>
       <Amounts amount={amount} increase={increase} decrease={decrease} />
       <h5 className="subtotal">{formatPrice(price * amount)}</h5>
-      <button className="remove-btn" type="button">
+      <button
+        className="remove-btn"
+        type="button"
+        onClick={() => dispatch(deleteCartItem(id))}
+      >
         <FaTrash />
       </button>
     </Wrapper>
