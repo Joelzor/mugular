@@ -2,11 +2,13 @@ import styled from "styled-components";
 import CartColumns from "./CartColumns";
 import CartItem from "./CartItem";
 import CartTotals from "./CartTotals";
-import { useAppSelector } from "../hooks";
+import { useAppSelector, useAppDispatch } from "../hooks";
 import { Link } from "react-router-dom";
+import { clearCart } from "../features/cart/cartSlice";
 
 const CartContent = () => {
   const { cart } = useAppSelector((store) => store.cart);
+  const dispatch = useAppDispatch();
 
   return (
     <Wrapper className="section section-center">
@@ -19,7 +21,12 @@ const CartContent = () => {
         <Link to="/products" className="link-btn">
           continue shopping
         </Link>
-        <button className="link-btn clear-btn">clear shopping cart</button>
+        <button
+          className="link-btn clear-btn"
+          onClick={() => dispatch(clearCart())}
+        >
+          clear shopping cart
+        </button>
       </div>
       <CartTotals />
     </Wrapper>
