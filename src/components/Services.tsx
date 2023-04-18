@@ -10,10 +10,7 @@ const Services = () => {
             marvelous mugs <br />
             for every occasion
           </h3>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. At natus
-            consequatur qui soluta modi vitae enim vel, fuga omnis in!
-          </p>
+          <div className="title-underline"></div>
         </article>
         <div className="services-center">
           <article className="service">
@@ -62,18 +59,12 @@ const Wrapper = styled.section`
   .header h3 {
     font-weight: 600;
     margin-bottom: 2rem;
+    text-align: center;
   }
 
   p {
     margin-bottom: 0;
     line-height: 1.8;
-  }
-
-  @media (min-width: 992px) {
-    .header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
   }
 
   .services-center {

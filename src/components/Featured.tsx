@@ -43,8 +43,12 @@ const Wrapper = styled.section`
     }
   }
 
+  h3 {
+    font-weight: 600;
+  }
+
   .title-underline {
-    background-color: var(--primary-200);
+    background-color: var(--white);
   }
 
   .btn {

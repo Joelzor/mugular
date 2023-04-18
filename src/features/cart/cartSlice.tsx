@@ -8,8 +8,18 @@ interface cartInterface {
   shippingFee: number;
 }
 
+const getLocalStorage = () => {
+  let cart = localStorage.getItem("cart");
+
+  if (cart) {
+    return JSON.parse(cart);
+  } else {
+    return [];
+  }
+};
+
 const initialState: cartInterface = {
-  cart: [],
+  cart: getLocalStorage(),
   totalItems: 0,
   totalAmount: 0,
   shippingFee: 0,
