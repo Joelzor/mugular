@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import CartColumns from "./CartColumns";
 import CartItem from "./CartItem";
+import CartTotals from "./CartTotals";
 import { useAppSelector } from "../hooks";
 import { Link } from "react-router-dom";
 
@@ -20,6 +21,7 @@ const CartContent = () => {
         </Link>
         <button className="link-btn clear-btn">clear shopping cart</button>
       </div>
+      <CartTotals />
     </Wrapper>
   );
 };

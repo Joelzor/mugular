@@ -53,6 +53,7 @@ const Wrapper = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
+  border-bottom: var(--grey-200) 1px solid;
 
   .logo-span {
     color: var(--primary-500);
