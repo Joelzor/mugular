@@ -19,11 +19,11 @@ const Products = () => {
     <main>
       <Wrapper className="page">
         <div className="section-center products">
-          <Filters />
-          <div>
+          <div className="main">
             <Sort />
             <ProductList />
           </div>
+          <Filters />
         </div>
       </Wrapper>
     </main>
@@ -37,9 +37,17 @@ const Wrapper = styled.div`
     margin: 4rem auto;
   }
 
+  .main {
+    order: 1;
+  }
+
   @media (min-width: 768px) {
     .products {
-      grid-template-columns: 200px 1fr;
+      grid-template-columns: 1fr 200px;
+    }
+
+    .main {
+      order: revert;
     }
   }
 `;
