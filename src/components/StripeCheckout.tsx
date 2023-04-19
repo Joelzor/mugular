@@ -11,8 +11,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { formatPrice } from "../utils/helpers";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { clearCart } from "../features/cart/cartSlice";
-import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { User } from "@auth0/auth0-react";
+import { useNavigate } from "react-router-dom";
 
 const promise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
@@ -20,11 +21,12 @@ const CheckoutForm = () => {
   const { cart, totalAmount, shippingFee } = useAppSelector(
     (store) => store.cart
   );
-  const { user } = useAuth0();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { user }: User = useAuth0();
   const [succeeded, setSucceeded] = useState(false);
-  const [error, setError] = useState(null);
-  const [processing, setProcessing] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [processing, setProcessing] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState("");
   const stripe = useStripe();
@@ -66,19 +68,56 @@ const CheckoutForm = () => {
     createPaymentIntent();
   }, []);
 
-  const handleChange = async (e: any) => {};
+  const handleChange = async (e: any) => {
+    setDisabled(e.empty);
+    setError(e.error ? e.error.message : "");
+  };
 
-  const handleSubmit = async (e: any) => {};
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setProcessing(true);
+
+    const payload = await stripe?.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements?.getElement(CardElement),
+      },
+    });
+
+    if (payload?.error) {
+      setError(`Payment failed - ${payload.error.message}`);
+      setProcessing(false);
+    } else {
+      setError(null);
+      setProcessing(false);
+      setSucceeded(true);
+      setTimeout(() => {
+        navigate("/");
+        dispatch(clearCart());
+      }, 6000);
+    }
+  };
 
   return (
     <div>
+      {succeeded ? (
+        <article>
+          <h4>Thank you</h4>
+          <h4>Your payment was successful!</h4>
+        </article>
+      ) : (
+        <article>
+          <h4>Hello {user.name && user.name}</h4>
+          <p>Your total is {formatPrice(totalAmount + shippingFee)}</p>
+          <p>Test Card Number: 4242 4242 4242 4242</p>
+        </article>
+      )}
       <form id="payment-form" onSubmit={handleSubmit}>
         <CardElement
           id="card-element"
           options={cardStyle}
           onChange={handleChange}
         />
-        <button disabled={disabled || succeeded} id="submit">
+        <button disabled={processing || disabled || succeeded} id="submit">
           <span id="button-text">
             {processing ? <div className="spinner" id="spinner"></div> : "Pay"}
           </span>
