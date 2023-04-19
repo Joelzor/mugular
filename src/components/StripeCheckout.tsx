@@ -11,6 +11,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { formatPrice } from "../utils/helpers";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { clearCart } from "../features/cart/cartSlice";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const promise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
@@ -18,6 +20,15 @@ const CheckoutForm = () => {
   const { cart, totalAmount, shippingFee } = useAppSelector(
     (store) => store.cart
   );
+  const { user } = useAuth0();
+  const navigate = useNavigate();
+  const [succeeded, setSucceeded] = useState(false);
+  const [error, setError] = useState(null);
+  const [processing, setProcessing] = useState("");
+  const [disabled, setDisabled] = useState(true);
+  const [clientSecret, setClientSecret] = useState("");
+  const stripe = useStripe();
+  const elements = useElements();
 
   const cardStyle = {
     style: {
