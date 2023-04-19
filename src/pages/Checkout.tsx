@@ -20,7 +20,7 @@ const Checkout = () => {
   }
 
   return (
-    <Wrapper className="page">
+    <Wrapper className="page-100">
       <StripeCheckout />
     </Wrapper>
   );
