@@ -79,6 +79,7 @@ const CheckoutForm = () => {
 
     const payload = await stripe?.confirmCardPayment(clientSecret, {
       payment_method: {
+        // @ts-ignore
         card: elements?.getElement(CardElement),
       },
     });
