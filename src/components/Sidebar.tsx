@@ -73,6 +73,7 @@ const SidebarContainer = styled.div`
       margin-top: 20px;
       font-weight: 600;
       text-transform: none;
+      font-family: "Spectral", serif;
     }
   }
 
