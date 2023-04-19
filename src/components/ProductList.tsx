@@ -15,6 +15,7 @@ const ProductList = () => {
     return <ListView products={products} />;
   }
 
+  // @ts-ignore
   return <GridView products={products} />;
 };
 

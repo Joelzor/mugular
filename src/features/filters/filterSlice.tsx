@@ -40,6 +40,7 @@ export const transferProducts = createAsyncThunk(
     try {
       const state = thunkAPI.getState();
 
+      // @ts-ignore
       return state.products.products;
     } catch (error) {
       console.log(error);

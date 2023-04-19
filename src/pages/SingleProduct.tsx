@@ -44,6 +44,7 @@ const SingleProduct = () => {
           back to products
         </Link> */}
         <div className="product-center">
+          {/* @ts-ignore */}
           <ProductImages images={images} />
           <section className="content">
             <h2>{name} Mug</h2>

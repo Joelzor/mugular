@@ -22,6 +22,7 @@ const initialState: SingleProductInterface = {
     stars: 0,
     stock: 0,
     images: [],
+    shipping: false,
   },
 };
 
