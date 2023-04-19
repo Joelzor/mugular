@@ -51,11 +51,15 @@ const CheckoutForm = () => {
   const createPaymentIntent = async () => {
     try {
       // posting data to our serverless function upon component mount
-      const data = await axios.post(
+      const { data } = await axios.post(
         "/.netlify/functions/create-payment-intent",
         JSON.stringify({ cart, totalAmount, shippingFee })
       );
-    } catch (error) {}
+
+      setClientSecret(data.clientSecret);
+    } catch (error: any) {
+      console.log(error.response);
+    }
   };
 
   useEffect(() => {

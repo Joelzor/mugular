@@ -35,19 +35,6 @@ const Wrapper = styled.section`
 
   h1 {
     font-weight: 700;
-    animation: slidein 0.6s ease-in;
-  }
-
-  @keyframes slidein {
-    from {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-
-    to {
-      transform: translateX(0%);
-      opacity: 1;
-    }
   }
 
   p {

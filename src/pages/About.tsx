@@ -38,6 +38,18 @@ const Wrapper = styled.section`
     }
   }
 
+  @keyframes slidefromright {
+    from {
+      transform: translateX(300%);
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
   img {
     width: 100%;
     display: block;
@@ -63,6 +75,7 @@ const Wrapper = styled.section`
 
   .title-underline {
     margin-left: 0;
+    animation: slidefromright 0.4s linear;
   }
 
   @media (min-width: 992px) {
