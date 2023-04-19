@@ -31,7 +31,7 @@ export const getSingleProduct = createAsyncThunk(
   async (id: string, thunkAPI) => {
     try {
       const response = await axios(
-        `http://localhost:8888/.netlify/functions/single-product?id=${id}`
+        `https://mugular.netlify.app/.netlify/functions/single-product?id=${id}`
       );
 
       return response.data;
