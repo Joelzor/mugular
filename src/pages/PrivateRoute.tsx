@@ -7,7 +7,8 @@ const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
   if (!user) {
     return <Navigate to="/" />;
   }
-  return children;
+
+  return children as JSX.Element;
 };
 
 export default PrivateRoute;

@@ -2,7 +2,11 @@ import { Key, useState } from "react";
 import styled from "styled-components";
 import { ImageI } from "../interfaces/Product";
 
-const ProductImages = ({ images = [] }) => {
+interface ProductImagesProps {
+  images: ImageI[];
+}
+
+const ProductImages = ({ images }: ProductImagesProps) => {
   const [main, setMain] = useState<ImageI>(images[0]);
 
   return (

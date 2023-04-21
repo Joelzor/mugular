@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import Product from "./Product";
+import { ProductListI } from "../interfaces/Product";
 
-const GridView = ({ products = [] }) => {
+interface GridViewProps {
+  products: ProductListI[];
+}
+
+const GridView = ({ products }: GridViewProps) => {
   return (
     <Wrapper>
       <div className="products-container">

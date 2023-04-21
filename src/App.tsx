@@ -47,7 +47,6 @@ const App = () => {
         <Route
           path="/checkout"
           element={
-            // @ts-ignore
             <PrivateRoute>
               <Checkout />
             </PrivateRoute>
